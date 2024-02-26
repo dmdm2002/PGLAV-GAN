@@ -1,0 +1,45 @@
+root: 'Z:/2nd_paper'
+dataset_path: 'Z:/2nd_paper/dataset/ND/original'
+output_ckp: 'Z:/2nd_paper/backup/GANs/NestedU_sequence/1-fold/ckp'
+output_sample: 'Z:/2nd_paper/backup/GANs/NestedU_sequence/1-fold/sample'
+output_test: 'Z:/2nd_paper/backup/GANs/NestedU_sequence/1-fold/test'
+output_log: 'Z:/2nd_paper/backup/GANs/NestedU_sequence/1-fold/log'
+
+# Data
+data_folder: ['A', 'B']
+input_size: 224
+pool_size: 50
+
+# Generator
+deep_supervision: True
+input_channels: 3
+num_filter: [24, 48, 96, 192, 384]
+
+n_blocks: 12
+vit_input_shape: [384, 14, 14]
+rezero: True
+
+# Train/Test Config
+full_epoch: 300
+load_ckp_epoch: 0
+
+device: 'cuda'
+
+lr: 2e-4
+b1: 0.5
+b2: 0.999
+lamda_cycle: 10
+lamda_id: 0.5
+batch_size: 2
+
+fourier_transform_loss_weight: 0.5
+
+do_ckp_load:  False
+do_fourier_transform_loss: False
+display_loss_list: ["Gen/loss_G_GAN", "Gen/loss_G_cycle", "Gen/loss_G", "Disc/loss_D_A", "Disc/loss_D_B", "Disc/loss_D"]
+do_print:  True
+do_sampling:  True
+
+# Handler
+# run_type [0 : train], [1 : test score], [2 : testing output image]
+run_type: 0
