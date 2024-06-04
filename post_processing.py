@@ -71,7 +71,7 @@ db = ['A', 'B']
 gamma_sizes = [0.8, 0.9, 1.2]
 kernel = [3, 9, 11]
 quality = [85, 90, 95]
-ahe_ = ['one']
+
 classes = ['fake']
 
 for d in db:
