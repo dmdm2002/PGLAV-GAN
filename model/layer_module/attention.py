@@ -80,7 +80,7 @@ class ParallelAttentionModule(nn.Module):
         super(ParallelAttentionModule, self).__init__()
 
         self.re_attn = ReAttention(dim=dim, num_heads=num_heads)
-        self.local_attn = LocalMHA(dim=dim, window_size=window_size, causal=True)
+        self.local_attn = LocalMHA(dim=dim, dim_head=dim // 8, window_size=window_size, causal=True)
 
     def forward(self, x):
         re_attn_y, _ = self.re_attn(x)
